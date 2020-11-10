@@ -1,0 +1,74 @@
+﻿@model IEnumerable<NewDiplom.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Аккаунт</h1>
+
+<p>
+    <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+</p>
+<body class="body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Логин
+                </th>
+                <th class="colortext">
+                    Пароль
+                </th>
+                <th class="colortext">
+                    Дата создания
+                </th>
+                <th class="colortext">
+                    Номер телефона
+                </th>
+                <th class="colortext">
+                    Почта
+                </th>
+                <th class="colortext">
+                    Права
+                </th>
+                <th class="colortext">
+                    Совместительство
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Login)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Date_Create)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Phone_Number)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Rights.View)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Plurality.View)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

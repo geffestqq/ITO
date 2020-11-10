@@ -1,0 +1,68 @@
+﻿@model IEnumerable<NewDiplom.Models.TaskDistribution>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Распределение задач</h1>
+
+<p>
+    <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+</p>
+<body class="body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Время распределения
+                </th>
+                <th class="colortext">
+                    Дата распределения
+                </th>
+                <th class="colortext">
+                    Период распределения
+                </th>
+                <th class="colortext">
+                    Совместительство
+                </th>
+                <th class="colortext">
+                    Задача
+                </th>
+                <th class="colortext">
+                    Статус
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Time_Distribution)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Date_Distribution)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Period_Distribution)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Plurality.Id)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Zadachi.View)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Status.Status_name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
