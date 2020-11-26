@@ -9497,20 +9497,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Geffest\\.nuget\\packages\\": {}
+    "C:\\Users\\wbu8e\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Geffest\\Desktop\\NewDiplom.3.2\\NewDiplom\\NewDiplom.csproj",
+      "projectUniqueName": "D:\\customer\\diplomKimiko\\code\\ITO\\NewDiplom\\NewDiplom.csproj",
       "projectName": "NewDiplom",
-      "projectPath": "C:\\Users\\Geffest\\Desktop\\NewDiplom.3.2\\NewDiplom\\NewDiplom.csproj",
-      "packagesPath": "C:\\Users\\Geffest\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Geffest\\Desktop\\NewDiplom.3.2\\NewDiplom\\obj\\",
+      "projectPath": "D:\\customer\\diplomKimiko\\code\\ITO\\NewDiplom\\NewDiplom.csproj",
+      "packagesPath": "C:\\Users\\wbu8e\\.nuget\\packages\\",
+      "outputPath": "D:\\customer\\diplomKimiko\\code\\ITO\\NewDiplom\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Geffest\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\wbu8e\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -9521,6 +9528,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -9532,6 +9540,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "ClosedXML": {
             "target": "Package",
@@ -9598,7 +9607,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
