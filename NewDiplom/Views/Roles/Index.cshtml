@@ -10,7 +10,7 @@
     <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
 </p>
 <body class="body">
-    <table class="table table-striped">
+    <table class="table table-striped mdl-js-data-table" id="roles">
         <thead>
             <tr class="colortext">
                 <td>Название роли</td>
@@ -34,3 +34,20 @@
         </tbody>
     </table>
 </body>
+<script type="text/javascript" charset="utf8">
+    $(document).ready(function () {
+        $('#roles').DataTable({
+            "language": {
+                "url": "/lib/dataTables/dist/css/i18n/Russian.json",
+            },
+            columnDefs: [
+                {
+                    targets: [0, 1],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ],
+            "pagingType": "full_numbers",
+            "stateSave": "true",
+        });
+    });
+</script>

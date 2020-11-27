@@ -23,7 +23,7 @@ namespace NewDiplom.Controllers
     public class ZadachisController : Controller
     {
         private readonly DiplomContext _context;
- 
+
 
         public ZadachisController(DiplomContext context)
         {
@@ -59,7 +59,7 @@ namespace NewDiplom.Controllers
                         children = GetChildren(treeNodes, l.Id).ToArray()
                     }).ToList();
 
-            return JsonSerializer.Serialize(treeNodesViewModel); 
+            return JsonSerializer.Serialize(treeNodesViewModel);
         }
 
         private List<TreeviewNodeEntity> GetChildren(List<Zadachi> treeNodes, int parentId)
@@ -97,10 +97,13 @@ namespace NewDiplom.Controllers
         }
 
         // GET: Zadachis/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
             ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Status_name");
-            ViewData["ZadachiParentId"] = new SelectList(_context.Zadachis, "Id", "View");
+            if (id == null)
+                ViewData["ZadachiParentId"] = new SelectList(_context.Zadachis, "Id", "View");
+            else
+                ViewData["ZadachiParentId"] = new SelectList(_context.Zadachis, "Id", "View", id);
             return View();
         }
 
@@ -203,8 +206,8 @@ namespace NewDiplom.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
-            
-            
+
+
             var zadachi = await _context.Zadachis.FindAsync(id);
             _context.Zadachis.Remove(zadachi);
             await _context.SaveChangesAsync();
@@ -314,15 +317,15 @@ namespace NewDiplom.Controllers
             PdfPage page = doc.Pages.Add();
             //Create a PdfGrid.
             PdfGrid pdfGrid = new PdfGrid();
-           
-    
-  
- 
+
+
+
+
             //Add list to IEnumerable
             IEnumerable<Zadachi> dataTable = _context.Zadachis;
             //Assign data source.
             pdfGrid.DataSource = dataTable;
-          
+
             //Draw grid to the page of PDF document.
             pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(10, 10));
             //Save the PDF document to stream
