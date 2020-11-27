@@ -18,7 +18,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/jstree.min.js"></script>
 
 <p>
-    <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+    <a id="idcreate" asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
 </p>
 <body class="body colortext">
     <div class="row">
@@ -34,7 +34,7 @@
         <hr />
         <div class="col col-12">
             <p id="action_block">
-                <a id="idedit"class="btn br0 btn-secondary" href="/Zadachis/Edit">Изменить</a>
+                <a id="idedit" class="btn br0 btn-secondary" href="/Zadachis/Edit">Изменить</a>
                 <a id="iddetails" class="btn br0 btn-secondary" href="/Zadachis/Details">Подробнее</a>
                 <a id="iddelete" class="btn br0 btn-secondary" href="/Zadachis/Delete">Удалить</a>
             </p>
@@ -81,7 +81,7 @@
                     $("#idedit").attr("href", "/Zadachis/Edit/" + r);
                     $("#iddetails").attr("href", "/Zadachis/Details/" + r);
                     $("#iddelete").attr("href", "/Zadachis/Delete/" + r);
-                 
+                    $("#idcreate").attr("href", "/Zadachis/Create/" + r);
                    
                 } else {
                     $('#action_block').hide();
