@@ -69,7 +69,7 @@ namespace NewDiplom.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Time_Distribution,Date_Distribution,Period_Distribution,PluralityId,ZadachiId,StatusId")] TaskDistribution taskDistribution)
+        public async Task<IActionResult> Create([Bind("Id,StartedAt,PeriodUnit,PeriodValue,PluralityId,ZadachiId,StatusId")] TaskDistribution taskDistribution)
         {
             if (ModelState.IsValid)
             {
@@ -113,7 +113,7 @@ namespace NewDiplom.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Time_Distribution,Date_Distribution,Period_Distribution,PluralityId,ZadachiId,StatusId")] TaskDistribution taskDistribution)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,StartedAt,PeriodUnit,PeriodValue,PluralityId,ZadachiId,StatusId")] TaskDistribution taskDistribution)
         {
             if (id != taskDistribution.Id)
             {

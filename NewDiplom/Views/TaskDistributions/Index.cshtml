@@ -14,13 +14,13 @@
         <thead>
             <tr>
                 <th class="colortext">
-                    Время распределения
+                    Распределено
                 </th>
                 <th class="colortext">
-                    Дата распределения
+                    Значение периода
                 </th>
                 <th class="colortext">
-                    Период распределения
+                    Единица периода
                 </th>
                 <th class="colortext">
                     Совместительство
@@ -37,31 +37,31 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td class="colortext">
-                        @Html.DisplayFor(modelItem => item.Time_Distribution)
-                    </td>
-                    <td class="colortext">
-                        @Html.DisplayFor(modelItem => item.Date_Distribution)
-                    </td>
-                    <td class="colortext">
-                        @Html.DisplayFor(modelItem => item.Period_Distribution)
-                    </td>
-                    <td class="colortext">
-                        @Html.DisplayFor(modelItem => item.Plurality.View)
-                    </td>
-                    <td class="colortext">
-                        @Html.DisplayFor(modelItem => item.Zadachi.View)
-                    </td>
-                    <td class="colortext">
-                        @Html.DisplayFor(modelItem => item.Status.Status_name)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
-                    </td>
-                </tr>
+            <tr>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.StartedAt)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.PeriodValue)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.PeriodUnit)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.Plurality.View)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.Zadachi.View)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.Status.Status_name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

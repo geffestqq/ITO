@@ -228,7 +228,7 @@ namespace NewDiplom.Controllers
 
 
         // Тут вывод в файл
-        public async Task<IActionResult> Export(Zadachi zadachi)
+        public IActionResult Export(Zadachi zadachi)
         {
             using (var workbook = new XLWorkbook())
             {

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using NewDiplom.Enums;
 
 namespace NewDiplom.Models
 {
@@ -12,14 +13,20 @@ namespace NewDiplom.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Обязательное для заполнения*"), StringLength(11)]
-        public string Time_Distribution { get; set; }
+        //[Required(ErrorMessage = "Обязательное для заполнения*"), StringLength(11)]
+        //public string Time_Distribution { get; set; }
 
-        [Required(ErrorMessage = "Обязательное для заполнения*"), StringLength(11)]
-        public string Date_Distribution { get; set; }
+        //[Required(ErrorMessage = "Обязательное для заполнения*"), StringLength(11)]
+        //public string Date_Distribution { get; set; }
 
-        [Required(ErrorMessage = "Обязательное для заполнения*"), StringLength(10)]
-        public string Period_Distribution { get; set; }
+        [Required(ErrorMessage = "Обязательное для заполнения*")]
+        public DateTime StartedAt { get; set; }
+
+        [EnumDataType(typeof(PeriodUnitEnum))]
+        public PeriodUnitEnum PeriodUnit { get; set; }
+
+        [Required(ErrorMessage = "Обязательное для заполнения*")]
+        public int PeriodValue { get; set; }
 
         public int PluralityId { get; set; }
         public Plurality Plurality { get; set; }
@@ -32,17 +39,11 @@ namespace NewDiplom.Models
         public Status Status { get; set; }
 
         public string View => String.Format("{0} {1} {2} {3} {4}",
-
                     Zadachi == null ? String.Empty : Zadachi.Task_Name,
-
-                    Time_Distribution,
-
-                    Date_Distribution,
-
-                    Period_Distribution,
-
+                    StartedAt,
+                    PeriodValue,
+                    PeriodUnit,
                     Plurality == null ? String.Empty : Plurality.View);
-
 
         public ICollection<TaskComment> TaskComments { get; set; }
         public ICollection<FileTask> FileTasks { get; set; }
