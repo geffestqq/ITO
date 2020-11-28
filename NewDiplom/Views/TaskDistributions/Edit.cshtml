@@ -1,4 +1,5 @@
-﻿@model NewDiplom.Models.TaskDistribution
+﻿@using NewDiplom.Enums
+@model NewDiplom.Models.TaskDistribution
 
 @{
     ViewData["Title"] = "Edit";
@@ -15,19 +16,21 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
                 <div class="form-group">
-                    <label asp-for="Time_Distribution" class="control-label colortext">Время распределения</label>
-                    <input asp-for="Time_Distribution" class="form-control" />
-                    <span asp-validation-for="Time_Distribution" class="text-danger"></span>
+                    <label asp-for="StartedAt" class="control-label colortext">Распределено</label>
+                    <input asp-for="StartedAt" class="form-control" />
+                    <span asp-validation-for="StartedAt" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Date_Distribution" class="control-label colortext">Дата распределения</label>
-                    <input asp-for="Date_Distribution" class="form-control" />
-                    <span asp-validation-for="Date_Distribution" class="text-danger"></span>
+                    <label asp-for="PeriodValue" class="control-label colortext">Значение периода</label>
+                    <input asp-for="PeriodValue" class="form-control" />
+                    <span asp-validation-for="PeriodValue" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Period_Distribution" class="control-label colortext">Период распределения</label>
-                    <input asp-for="Period_Distribution" class="form-control" />
-                    <span asp-validation-for="Period_Distribution" class="text-danger"></span>
+                    <label asp-for="PeriodUnit" class="control-label colortext">Единица периода</label>
+                    <select asp-for="PeriodUnit" asp-items="Html.GetEnumSelectList<PeriodUnitEnum>()">
+                        <option selected="selected" value="">Выберите</option>
+                    </select>
+                    <span asp-validation-for="PeriodUnit" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PluralityId" class="control-label colortext">Совместительство</label>
