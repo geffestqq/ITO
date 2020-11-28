@@ -31,7 +31,7 @@ namespace NewDiplom.Models
         public int PluralityId { get; set; }
         public Plurality Plurality { get; set; }
 
-// Эта строка не нужна , автоматически создаться эта колонкак как FK
+        // Эта строка не нужна , автоматически создаться эта колонкак как FK
         public int ZadachiId { get; set; }
         public Zadachi Zadachi { get; set; }
 
@@ -42,7 +42,7 @@ namespace NewDiplom.Models
                     Zadachi == null ? String.Empty : Zadachi.Task_Name,
                     StartedAt,
                     PeriodValue,
-                    PeriodUnit,
+                    EnumHelper<PeriodUnitEnum>.GetDisplayValue(PeriodUnit),
                     Plurality == null ? String.Empty : Plurality.View);
 
         public ICollection<TaskComment> TaskComments { get; set; }

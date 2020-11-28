@@ -198,7 +198,7 @@ namespace NewDiplom.Controllers
             _context.Plurality.Load();
             _context.Employees.Load();
 
-            var allE = _context.Employees
+            var countAll = _context.Employees
                 .Count();
             var usedEList = _context.TaskDistributions
                 .Where(s => s.StartedAt < now)
@@ -208,14 +208,18 @@ namespace NewDiplom.Controllers
                 if (!CheckDate(now, usedEList[i].StartedAt, usedEList[i].PeriodUnit, usedEList[i].PeriodValue))
                     usedEList.RemoveAt(i);
             }
-            var usedE = usedEList
+            var countUsed = usedEList
                 .Select(s => s.Plurality.Employee)
                 .Distinct()
                 .Count();
-            if (allE == 0)
-                ViewData["Used"] = 0;
+            var countFree = countAll - countUsed;
+            ViewData["CountAll"] = countAll;
+            ViewData["CountUsed"] = countUsed;
+            ViewData["CountFree"] = countFree;
+            if (countAll == 0)
+                ViewData["Percent"] = 0;
             else
-                ViewData["Used"] = (int)(100 * usedE / allE);
+                ViewData["Percent"] = (int)(100 * countUsed / countAll);
             return View();
         }
 
