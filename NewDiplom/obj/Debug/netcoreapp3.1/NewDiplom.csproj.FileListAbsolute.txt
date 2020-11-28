@@ -3275,3 +3275,4 @@ D:\customer\diplomKimiko\code\ITO\NewDiplom\obj\Debug\netcoreapp3.1\NewDiplom.cs
 D:\customer\diplomKimiko\code\ITO\NewDiplom\obj\Debug\netcoreapp3.1\NewDiplom.dll
 D:\customer\diplomKimiko\code\ITO\NewDiplom\obj\Debug\netcoreapp3.1\NewDiplom.pdb
 D:\customer\diplomKimiko\code\ITO\NewDiplom\obj\Debug\netcoreapp3.1\NewDiplom.genruntimeconfig.cache
+D:\customer\diplomKimiko\code\ITO\NewDiplom\obj\Debug\netcoreapp3.1\Razor\Views\TaskDistributions\FreeEmployees.cshtml.g.cs

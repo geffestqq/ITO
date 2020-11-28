@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NewDiplom.Models;
+using NewDiplom.Enums;
 
 namespace NewDiplom.Controllers
 {
@@ -188,6 +189,54 @@ namespace NewDiplom.Controllers
         private bool TaskDistributionExists(int id)
         {
             return _context.TaskDistributions.Any(e => e.Id == id);
+        }
+        [HttpGet]
+        public IActionResult FreeEmployees()
+        {
+            var now = DateTime.Now;
+            _context.TaskDistributions.Load();
+            _context.Plurality.Load();
+            _context.Employees.Load();
+
+            var allE = _context.Employees
+                .Count();
+            var usedEList = _context.TaskDistributions
+                .Where(s => s.StartedAt < now)
+                .ToList();
+            for (int i = usedEList.Count - 1; i > -1; i--)
+            {
+                if (!CheckDate(now, usedEList[i].StartedAt, usedEList[i].PeriodUnit, usedEList[i].PeriodValue))
+                    usedEList.RemoveAt(i);
+            }
+            var usedE = usedEList
+                .Select(s => s.Plurality.Employee)
+                .Distinct()
+                .Count();
+            if (allE == 0)
+                ViewData["Used"] = 0;
+            else
+                ViewData["Used"] = (int)(100 * usedE / allE);
+            return View();
+        }
+
+        private bool CheckDate(DateTime now, DateTime startedAt, PeriodUnitEnum periodUnit, int periodValue)
+        {
+            var result = false;
+            DateTime EndDate = new DateTime();
+            switch (periodUnit)
+            {
+                case PeriodUnitEnum.Day:
+                    EndDate = startedAt.AddDays(periodValue);
+                    break;
+                case PeriodUnitEnum.Week:
+                    EndDate = startedAt.AddDays(7 * periodValue);
+                    break;
+                case PeriodUnitEnum.Month:
+                    EndDate = startedAt.AddMonths(periodValue);
+                    break;
+            }
+            result = EndDate > now;
+            return result;
         }
     }
 }

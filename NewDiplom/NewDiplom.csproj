@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyVersion>1.0.7637.0</AssemblyVersion>
-    <FileVersion>1.0.7637.14582</FileVersion>
+    <FileVersion>1.0.7637.23816</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
