@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("NewDiplom")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.7637.36941")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.7643.21756")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("NewDiplom")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NewDiplom")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.7637.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.7643.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
 

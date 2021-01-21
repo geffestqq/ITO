@@ -112,7 +112,8 @@ namespace NewDiplom.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Task_Name,Task_Detail,Date_Open,Date_Close,ZadachiParentId,StatusId")] Zadachi zadachi)
+        //public async Task<IActionResult> Create([Bind("Id,Task_Name,Task_Detail,Date_Open,Date_Close,ZadachiParentId,StatusId")] Zadachi zadachi)
+        public async Task<IActionResult> Create([Bind("Task_Name,Task_Detail,Date_Open,Date_Close,ZadachiParentId,StatusId")] Zadachi zadachi)
         {
             _context.Statuses.Load();
             if (ModelState.IsValid)
