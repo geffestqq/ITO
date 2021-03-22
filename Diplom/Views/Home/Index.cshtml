@@ -1,0 +1,190 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+<body class="body">
+    
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <br />
+         <div class="text-center">
+            <image height="25%" width="25%" src="https://www.college-edu.ru/upload/medialibrary/d2e/d2e35f185d294878179d5a0f2a6c9f3d.png"></image>
+
+        </div>
+        <div class="text-center">
+            <p class="text-center colortext" style="margin-top: 30%; font:bold; font-size:48px; margin-top: 0;">
+                Для работы с веб ресурсом, пожалуйста авторизуйтесь
+            </p>
+            <a type="button" class="btn btn-lg  br0 btn-outline-dark" asp-area="Identity" asp-page="/Account/Login">Войти</a>
+            <a type="button" class="btn btn-lg br0 btn-outline-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+            
+        </div>
+    }
+    else
+    {
+    <main role="main">
+        <div class="album py-5 ">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Роли</h4>
+                            </div>
+                            <div class="card-body" bgcolor="#c1d5e0">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/126/126472.png"></image>
+
+                                <a type="button" asp-action="Index" asp-controller="Roles" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Функции ИС</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/117/117924.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="Functions" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Управление ролями</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/126/126318.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="RoleManagment" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Сотрудники</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/84/84936.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="Employees" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Должности</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/126/126197.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="Positions" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Должности сотрудника</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/126/126423.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="Pluralities" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Учетная Запись</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/61/61205.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="Account" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Статус задач</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/37/37921.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="Statuses" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Задача</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/51/51841.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="Zadachis" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Распределение задач</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/126/126549.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="TaskDistributions" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Вид комментария</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/14/14501.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="TypeComments" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Комментарии к задаче</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/60/60782.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="TaskComments" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm text-center">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Файлы к задаче</h4>
+                            </div>
+                            <div class="card-body">
+                                <image height="25%" width="25%" src="https://image.flaticon.com/icons/png/512/130/130291.png"></image>
+                                <a type="button" asp-action="Index" asp-controller="FileTasks" class="btn btn-lg btn-block br0 btn-secondary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+    }
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+    <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="particles.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>

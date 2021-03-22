@@ -1,0 +1,59 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Аутенфикация";
+}
+
+<h1 class="colortext">@ViewData["Title"]</h1>
+<body class="body">
+    <div class="row">
+        <div class="col-md-4">
+            <section>
+                <form id="account" method="post">
+                    <h4 class="colortext">Вход</h4>
+                    <hr />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group colortext">
+                        <label asp-for="Input.Email">Почта</label>
+                       <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">✉</span>
+                            </div>
+                            <input type="text" asp-for="Input.Email" class="form-control" placeholder="Почта" aria-label="Почта" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="form-group colortext">
+                        <label asp-for="Input.Password">Пароль</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">🔑</span>
+                            </div>
+                            <input  asp-for="Input.Password" class="form-control" placeholder="Пароль" aria-label="Пароль" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox colortext">
+                            <label asp-for="Input.RememberMe">Запомнить данные?</label>
+                            <input asp-for="Input.RememberMe" />
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn br0 btn-secondary">Войти</button>
+                    </div>
+                    <div class="form-group">
+                        <p>
+                            <a id="forgot-password" asp-page="./ForgotPassword" class="colortext">Забыли пароль?</a>
+                        </p>
+                        <p>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="colortext">Регистрация</a>
+                        </p>
+                    </div>
+                </form>
+            </section>
+        </div>
+</body>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

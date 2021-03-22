@@ -1,0 +1,9 @@
+﻿body {
+    background-color: black !important;
+   
+}
+
+.colortext {
+    color: springgreen !important; /* Цвет текста */
+    font-family: 'Verdana';
+}
