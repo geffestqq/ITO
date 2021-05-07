@@ -19,14 +19,17 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Diplom.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Diplom.Controllers
 {
+    [Authorize(Roles = "Test")]
     public class ZadachisController : Controller
     {
         private readonly ApplicationDbContext _context;
 
         private string test;
+        
         public ZadachisController(ApplicationDbContext context)
         {
             _context = context;

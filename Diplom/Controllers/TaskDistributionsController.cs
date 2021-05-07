@@ -27,10 +27,41 @@ namespace Diplom.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+        public async Task<IActionResult> Index1()
+        {
 
+            if (_signInManager.IsSignedIn(User))
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (await _userManager.IsInRoleAsync(user, "админ"))
+                {
+                    var _tasks = _context.TaskDistributions
+                        .Include(e => e.Plurality)
+                        .Include(e => e.Plurality.Employee)
+                        .Include(e => e.Plurality.Position)
+                        .Include(e => e.Zadachi)
+                        .Include(e => e.Status)
+                        .ToList();
+                    return View(await _context.TaskDistributions.Where(e => e.Status.Status_name == "Завершен").ToListAsync());
+                }
+
+                var tasks = _context.TaskDistributions
+                        .Include(e => e.Plurality)
+                        .Include(e => e.Plurality.Employee)
+                        .Include(e => e.Plurality.Position)
+                        .Include(e => e.Zadachi)
+                        .Include(e => e.Status)
+                        .Where(e => e.PluralityId == user.PluralityId).ToList();
+
+                return View(await _context.TaskDistributions.Where(e => e.Status.Status_name == "Завершен").ToListAsync());
+            }
+            return View(await _context.TaskDistributions.Where(e => e.Status.Status_name == "Завершен").ToListAsync());
+        }
+        
         // GET: TaskDistributions
         public async Task<IActionResult> Index()
         {
+
             if (_signInManager.IsSignedIn(User))
             {
                 var user = await _userManager.GetUserAsync(User);
@@ -56,7 +87,7 @@ namespace Diplom.Controllers
 
                 return View(tasks);
             }
-            return View();
+            return View(await _context.TaskDistributions.ToListAsync());
         }
 
         // GET: TaskDistributions/Details/5
@@ -259,6 +290,100 @@ namespace Diplom.Controllers
         
             return View(usedEList.ToList());
         }
+        public async Task<IActionResult> Index2()
+        {
+
+            if (_signInManager.IsSignedIn(User))
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (await _userManager.IsInRoleAsync(user, "админ"))
+                {
+                    var _tasks = _context.TaskDistributions
+                        .Include(e => e.Plurality)
+                        .Include(e => e.Plurality.Employee)
+                        .Include(e => e.Plurality.Position)
+                        .Include(e => e.Zadachi)
+                        .Include(e => e.Status)
+                        .ToList();
+                    return View(await _context.TaskDistributions.Where(e => e.Status.Status_name == "В работе").ToListAsync());
+                }
+
+                var tasks = _context.TaskDistributions
+                        .Include(e => e.Plurality)
+                        .Include(e => e.Plurality.Employee)
+                        .Include(e => e.Plurality.Position)
+                        .Include(e => e.Zadachi)
+                        .Include(e => e.Status)
+                        .Where(e => e.PluralityId == user.PluralityId).ToList();
+
+                return View(await _context.TaskDistributions.Where(e => e.Status.Status_name == "В работе").ToListAsync());
+            }
+            return View(await _context.TaskDistributions.Where(e => e.Status.Status_name == "В работе").ToListAsync());
+        }
+        public async Task<IActionResult> Index3()
+        {
+            var a = DateTime.Now;
+            if (_signInManager.IsSignedIn(User))
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (await _userManager.IsInRoleAsync(user, "админ"))
+                {
+                    var _tasks = _context.TaskDistributions
+                        .Include(e => e.Plurality)
+                        .Include(e => e.Plurality.Employee)
+                        .Include(e => e.Plurality.Position)
+                        .Include(e => e.Zadachi)
+                        .Include(e => e.Status)
+                        .ToList();
+                    return View(await _context.TaskDistributions.Where(e => e.PeriodUnit == PeriodUnitEnum.Month || e.PeriodUnit == PeriodUnitEnum.Week && e.PeriodValue > 2 || e.PeriodUnit == PeriodUnitEnum.Day && e.PeriodValue > 7).ToListAsync());
+                }
+
+                var tasks = _context.TaskDistributions
+                        .Include(e => e.Plurality)
+                        .Include(e => e.Plurality.Employee)
+                        .Include(e => e.Plurality.Position)
+                        .Include(e => e.Zadachi)
+                        .Include(e => e.Status)
+                        .Where(e => e.PluralityId == user.PluralityId).ToList();
+
+                return View(await _context.TaskDistributions.Where(e => e.PeriodUnit == PeriodUnitEnum.Month || e.PeriodUnit == PeriodUnitEnum.Week && e.PeriodValue > 2 || e.PeriodUnit == PeriodUnitEnum.Day && e.PeriodValue > 7).ToListAsync());
+            }
+            return View(await _context.TaskDistributions.Where(e => e.PeriodUnit == PeriodUnitEnum.Month || e.PeriodUnit == PeriodUnitEnum.Week && e.PeriodValue > 2 || e.PeriodUnit == PeriodUnitEnum.Day && e.PeriodValue > 7).ToListAsync());
+        }
+        public async Task<IActionResult> Index4()
+        {
+            var a = DateTime.Now;
+            if (_signInManager.IsSignedIn(User))
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (await _userManager.IsInRoleAsync(user, "админ"))
+                {
+                    var _tasks = _context.TaskDistributions
+                        .Include(e => e.Plurality)
+                        .Include(e => e.Plurality.Employee)
+                        .Include(e => e.Plurality.Position)
+                        .Include(e => e.Zadachi)
+                        .Include(e => e.Status)
+                        .ToList();
+                    return View(await _context.TaskDistributions.Where(e => e.PeriodUnit == PeriodUnitEnum.Day && e.PeriodValue < 6).ToListAsync());
+                }
+
+                var tasks = _context.TaskDistributions
+                        .Include(e => e.Plurality)
+                        .Include(e => e.Plurality.Employee)
+                        .Include(e => e.Plurality.Position)
+                        .Include(e => e.Zadachi)
+                        .Include(e => e.Status)
+                        .Where(e => e.PluralityId == user.PluralityId).ToList();
+
+                return View(await _context.TaskDistributions.Where(e => e.PeriodUnit == PeriodUnitEnum.Day && e.PeriodValue < 6).ToListAsync());
+            }
+            return View(await _context.TaskDistributions.Where(e => e.PeriodUnit == PeriodUnitEnum.Day && e.PeriodValue < 6).ToListAsync());
+        }
+
+
+
+
 
         private bool CheckDate(DateTime now, DateTime startedAt, PeriodUnitEnum periodUnit, int periodValue)
         {

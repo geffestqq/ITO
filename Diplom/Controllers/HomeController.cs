@@ -12,6 +12,7 @@ using Diplom.Models;
 using Diplom.Data;
 using Microsoft.AspNetCore.Http;
 
+
 namespace Diplom.Controllers
 {
     public class HomeController : Controller
@@ -37,7 +38,7 @@ namespace Diplom.Controllers
 
             Response.Cookies.Append("theme", data, cookies);
 
-            return Ok("Index");
+            return Ok();
         }
 
     }

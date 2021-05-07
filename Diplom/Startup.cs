@@ -46,6 +46,8 @@ namespace Diplom
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+           env.EnvironmentName = "Production";
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -56,6 +58,15 @@ namespace Diplom
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            // обработка ошибок HTTP
+            app.UseStatusCodePagesWithRedirects("https://localhost:5001/Home/Privacy");
+
+            app.Map("/error", ap => ap.Run(async context =>
+            {
+                await context.Response.WriteAsync($"Err: {context.Request.Query["code"]}");
+            }));
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

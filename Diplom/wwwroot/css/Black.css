@@ -1,9 +1,8 @@
 ﻿body {
-    background-color: black !important;
-   
+    background-color: #F9CA85 !important;
 }
 
 .colortext {
-    color: springgreen !important; /* Цвет текста */
+    color: purple !important; /* Цвет текста */
     font-family: 'Verdana';
 }

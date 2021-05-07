@@ -68,7 +68,7 @@ namespace Diplom.Areas.Identity.Pages.Account
                 return Page();
             }
 
-            var user = await _userManager.FindByEmailAsync(Input.Email);
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 // Don't reveal that the user does not exist

@@ -15,7 +15,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/dataTables/dist/js/jquery.dataTables.js"></script>
-
     <title>@ViewData["Title"] - Diplom</title>
     @{
         if (httpContextaccessor.HttpContext.Request.Cookies["theme"] == null)
@@ -25,20 +24,16 @@
         else
         {
             var theme = httpContextaccessor.HttpContext.Request.Cookies["theme"].ToString();
-            if (theme == "Black")
+            if (theme == "Светлая")
             {              
                 <link href="~/css/Black.css" rel="stylesheet" />
             }
-            if (theme == "Blue")
+            if (theme == "Темная")
             {
                 <link href="~/css/site.css" rel="stylesheet" />
 
             }
-            if (theme == "Red")
-            {
-
-                <link href="~/css/Red.css" rel="stylesheet" />
-            }
+           
         }
 
 
@@ -60,16 +55,6 @@
             font-family: 'Verdana';
         }
     </style>
-
-    <select name="theme" id="theme">
-        <option value="0" href="home">Тема</option>
-        <option value="1" >Black</option>
-        <option value="2" href="home">Green</option>
-        <option value="3" href="home">Blue</option>
-
-
-    </select>
-
 
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
@@ -103,6 +88,16 @@
             </div>
         </div>
         <div class="navbar navbar-dark bg-dark shadow-sm">
+
+            <select name="theme" id="theme">
+                <option value="0" href="home">Тема</option>
+                <option value="1">Светлая</option>
+                <option value="2" href="home">Темная</option>
+          
+
+
+            </select>
+
             <div class="container d-flex justify-content-between">
                 <a asp-action="Index" asp-controller="Home" class="navbar-brand d-flex align-items-center">
                     <img src="https://img.icons8.com/bubbles/50/000000/image-file.png" />

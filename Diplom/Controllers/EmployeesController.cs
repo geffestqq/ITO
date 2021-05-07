@@ -95,7 +95,6 @@ namespace Diplom.Controllers
             }
             return View(employee);
         }
-
         // GET: Employees/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -148,33 +147,35 @@ namespace Diplom.Controllers
         }
 
         // GET: Employees/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+
+
+        [HttpPost]
+        public IActionResult Delete(int[] selectedItems)
         {
-            if (id == null)
+            for (int i = 0; i < selectedItems.Length; i++)
             {
-                return NotFound();
+                var employee = _context.Employees.Find(selectedItems[i]);
+                _context.Employees.Remove(employee);
+                _context.SaveChanges();
             }
-
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
-            return View(employee);
+            return StatusCode(201);
         }
 
-        // POST: Employees/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var employee = await _context.Employees.FindAsync(id);
-            _context.Employees.Remove(employee);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+
+       //POST: Employees/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var employee = await _context.Employees.FindAsync(id);
+        //    _context.Employees.Remove(employee);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
+
+
+
+
 
         private bool EmployeeExists(int id)
         {

@@ -25,9 +25,11 @@
     </div>
 </div>
 <hr />
+<button type="button" onclick="SelectedCheckbox()" class="btn-group col-md-2 col-md-offset-0">Remove</button>
+
 
 @*<script src="/lib/jquery/dist/jquery.min.js"></script>
-<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
 
 <script type="text/javascript" language="javascript">
 
@@ -62,6 +64,7 @@
 </script>
 <body class="body">
     <form asp-action="Index">
+
         <div class="form-group">
             <label class="control-label colortext">Фамилия</label>
             <input asp-for="@FilterSurname" class="form-control" />
@@ -76,13 +79,15 @@
         </div>
         <div class="form-group">
             <input type="submit" value="Применить фильт" class="btn br0 btn-secondary" />
+            <input type="submit" value="Удалить выбранные значения" class="btn br0 btn-secondary" />
         </div>
     </form>
 
     <br />
-    <table class="table table-striped mdl-js-data-table" id="employees">
+    <table class="table table-striped mdl-js-data-table">
         <thead>
             <tr>
+                <th><input type="checkbox" class="all" data-id="d1" title="Выбрать все">
                 <th class="colortext">
                     Фамилия
                 </th>
@@ -98,10 +103,15 @@
                 <th></th>
             </tr>
         </thead>
+
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr>                 
+                    <td class="colortext">
+                        <input type="checkbox" name="selectedUsers" id="@item.Id" value="@item.Id" class="one" data-id="d1" />
+                    
+                    </td>
                     <td class="colortext">
                         @Html.DisplayFor(modelItem => item.Surname)
                     </td>
@@ -140,4 +150,44 @@
             "stateSave": "true",
         });
     });
+</script>
+@*Выбрать всё*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".all").on("change", function () {
+            var groupId = $(this).data('id');
+            $('.one[data-id="' + groupId + '"]').prop("checked", this.checked);
+        });
+ 
+        $(".one").on("change", function () {
+            var groupId = $(this).data('id');
+            var allChecked = $('.one[data-id="' + groupId + '"]:not(:checked)').length == 0;
+            $('.all[data-id="' + groupId + '"]').prop("checked", allChecked);
+        });
+    });
+</script>
+@*Только отмеченные*@
+<script type="text/javascript">
+
+        function SelectedCheckbox() {
+            var checkedArray = new Array();
+            $("input[name='selectedUsers']:checked")
+                .each(function () {
+                    checkedArray.push($(this).val());
+                });
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Delete", "Employees")',
+                dataType: "json",
+                data: { 'selectedItems': checkedArray },
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (data) {
+                    location.reload();
+                }
+            });
+            return;
+        }
 </script>

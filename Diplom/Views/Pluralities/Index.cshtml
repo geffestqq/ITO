@@ -10,7 +10,7 @@
     <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
 </p>
 <body class="body">
-    <table class="table table-striped">
+    <table class="table table-striped" id="tblProgs">
         <thead>
             <tr>
                 <th class="colortext">
@@ -42,3 +42,8 @@
         </tbody>
     </table>
 </body>
+<script>
+    setTimeout(function() {
+  location.reload();
+}, 10000);
+</script>
